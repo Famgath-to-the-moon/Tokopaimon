@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('layout.partials.head')
+<x-layout.partials.head/>
 
 <body class="bg-gradient-primary">
 
@@ -68,8 +68,7 @@
         </div>
 
     </div>
-
-    @include('layout.partials.script')
+    <x-layout.partials.script/>
 </body>
 
 </html>
