@@ -19,24 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/userdetail', function () {
-    return view('userdetail');
-})->name('userdetail');
+Route::get('/login', function () {
+    return view('templates.login');
+})->name('login');
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->name('dasboard');
 
-Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::get('/produk', function () {
+    return view('admin.produk');
+})->name('produk');
 
-Route::post('/postlogin',[LoginController::class,'doLogin'])->name('do-login');
-
-//ROUTE USER
-Route::middleware(['auth', 'roleuser'])->group(function () {
-    Route::get('/transaksi', [HomeController::class, 'index'])->name('userHome');
-
-});
-
-
-//ROUTE ADMIN
-Route::middleware(['auth', 'roleadmin'])->group(function () {
-    
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('adminHome');
-});
