@@ -49,7 +49,7 @@ Route::middleware('auth:sanctum')->group(function() {
         });
         Route::get('/', [TransaksiController::class, 'getAll']) -> name('api-get-all-transaksi');
         Route::get('/paginate', [TransaksiController::class, 'paginate']) -> name('api-get-paginate-transaksi');
-        Route::post('/', [TransaksiController::class, 'add']) -> name('api-add-transaksi');
+        Route::post('/produk/{id}', [TransaksiController::class, 'add']) -> name('api-add-transaksi');
     });
 
     //Kategori

@@ -13,9 +13,14 @@ class Produk extends Model
 
         return $this->belongsTo(Kategori::class,'kategori_id','id');
     }
+
     public function image(){
 
         return $this->belongsTo(Image::class,'image_id','id');
+    }
+
+    public function transaksi(){
+        return $this->hasOne(Transaksi::class,'transaksi_id','id');
     }
 
 }

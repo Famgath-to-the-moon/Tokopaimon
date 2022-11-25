@@ -44,13 +44,12 @@ class TransaksiController extends Controller
         ]);
     }
     
-    public function add(Request $request) {
+    public function add(Request $request,$produk_id) {
         $rules = array(
             'jumlah' => 'required',
-            'produk_id' => 'required',
             'user_id' => 'required',
         );
-
+        
         $validator = Validator::make($request->all(), $rules);
         
         if ($validator->fails()) {
@@ -59,25 +58,34 @@ class TransaksiController extends Controller
                 'message' => "Gagal Menambah Data, Validasi salah"
             ], 403);
         } else {
+            $dataProduk = Produk::find($produk_id);
+
+            if ($dataProduk->jumlah == 0){
+                return response()->json([
+                    'success' => true,
+                    'message' => "Stok Habis",
+                ],403);
+            }
+
             $data = new Transaksi;
             $data->jumlah = $request->input('jumlah');
-            $data->produk_id = $request->input('produk_id');
+            $data->produk_id = $produk_id;
             $data->user_id = $request->input('user_id');
 
             $result = $data->save();
 
             if(!is_null($data->jumlah)){
                 
-                $produk = Produk::with('transaksi')->where('id','=', $data->id)->get();
-
-                $produk->jumlah = $produk->jumlah - $data->jumlah;
-                $resultProduk = $produk->update();
+                $total = intval($dataProduk->jumlah-$data->jumlah );
+                $dataProduk->jumlah = $total;
+                $resultProduk = $dataProduk->update();
                 
-                if($resultProduk){
+                if($resultProduk || $result){
                     return response()->json([
                         'success' => true,
-                        'message' => "Jumlah produk telah berkurang",
-                        'data' => $produk,
+                        'message (1)' => "Berhasil Menmbahkan Data",
+                        'message (2)' => "Jumlah produk telah berkurang",
+                        'data' => $dataProduk,$data
                     ]);
                 }
                 else {
@@ -87,18 +95,19 @@ class TransaksiController extends Controller
                     ], 403);
                 }
             }
-            if ($result) {
-                return response()->json([
-                    'success' => true,
-                    'message' => "Berhasil Menambah Data",
-                    'data' => $data,
-                ]);
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'message' => "Gagal Menambah Data"
-                ], 403);
-            }
+            // if ($result) {
+            //     return response()->json([
+            //         'success' => true,
+            //         'message' => "Berhasil Menambah Data",
+            //         'data' => $data,
+            //     ]);
+            //     dd($result);
+            // } else {
+            //     return response()->json([
+            //         'success' => false,
+            //         'message' => "Gagal Menambah Data"
+            //     ], 403);
+            // }
         }
     }
     
