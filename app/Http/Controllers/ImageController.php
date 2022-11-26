@@ -97,4 +97,52 @@ class ImageController extends Controller
             'data' => $data,
         ]);
     }
+
+    public function edit(Request $request,$id){
+        $data = Image::find($id);
+        
+        if(!$request->hasFile('path')){
+            return response()->json([
+                'success' => false,
+                'message' => "Gagal Menambah Data validasi salah"
+            ], 403);
+        } else {
+         
+            $allowedfileExtension = ['pdf','jpg','png'];
+            $file = $request->file('path'); 
+            $extension = $file->getClientOriginalExtension();
+            $check = in_array($extension, $allowedfileExtension);
+
+            if($check){
+                $name = time() . '-' . $file->getClientOriginalName();
+                // dd($name);
+                
+                $file->move(public_path('upload/images/'. $name), $name);
+                $imagePath = ('upload/images/'.$name .'/'.$name);
+                $file= $imagePath;  
+            } else{
+                return response()->json([
+                    'success' => false,
+                    'message' => 'invalid_file_format',
+                ], 422);
+            }
+
+            $data = new Image();
+            $data->path = $file;
+            $result = $data->update();
+
+            if($result){                
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Berhasil tambah data image',
+                    'data' => $data,
+                ]);
+            }else {
+                return response()->json([
+                    'success' => false,
+                    'message' => "Gagal Menambah Data, data tidak terupdate"
+                ], 403);
+            }
+        }
+    }
 }

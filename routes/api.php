@@ -72,3 +72,4 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::post('/',[ImageController::class,'add'])->name('api-add-image');
     });
 });
+Route::put('/{id}',[ImageController::class,'edit'])->name('api-edit-image');

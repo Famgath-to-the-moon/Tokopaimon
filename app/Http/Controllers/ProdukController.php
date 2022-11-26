@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Kategori;
 use App\Models\Produk;
 use Illuminate\Http\Request;
@@ -12,8 +13,10 @@ class ProdukController extends Controller
 {
     public function getAll(Request $request) {
         $data = Produk::with('kategori','image')->get();
+        $kategori = Kategori::all();
         return view('user.welcome',[
             'datas' => $data,
+            'kategoris' => $kategori,
 
         ]);
     }
@@ -49,79 +52,149 @@ class ProdukController extends Controller
         $data = Produk::with(['kategori'])
             ->where('kategori_id', '=', $kategori_id)
             ->get();
-
+        $kategoris = Kategori::all();
             return view('user.produk-kategori',[
                 'datas' => $data,
-    
+                'kategoris' => $kategoris,
             ]);
     }
     
-    // public function add(Request $request) {
-    //     $rules = array(
-    //         'name' => 'required',
-    //         'harga' => 'required',
-    //         'jumlah' => 'required',
-    //         'deskripsi' => 'required',
-    //         'kategori_id' => 'required',
-    //         'image_id' => 'required',
-    //     );
+    public function add(Request $request) {
+        $rules = array(
+            'name' => 'required',
+            'harga' => 'required',
+            'jumlah' => 'required',
+            'deskripsi' => 'required',
+            'kategori_id' => 'required',
+        );
 
-    //     $validator = Validator::make($request->all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
         
-    //     if ($validator->fails()) {
-    //         return redirect('produk');
-    //     } else {
-    //         $data = new Produk;
-    //         $data->name = $request->input('name');
-    //         $data->jumlah = $request->input('jumlah');
-    //         $data->harga = $request->input('harga');
-    //         $data->kategori_id = $request->input('kategori_id');
-    //         $data->image_id = $request->input('image_id');
-    //         $data->deskripsi = $request->input('deskripsi');
+        if ($validator->fails()) {
+            return response()->json([
+                'gagal' => $validator->errors()
+            ]);
+        } 
+        if($request->hasFile('path')){
+            $allowedfileExtension = ['pdf','jpg','png'];
+            $file = $request->file('path'); 
+            $extension = $file->getClientOriginalExtension();
+            $check = in_array($extension, $allowedfileExtension);
 
-    //         $result = $data->save();
+            if($check){
+                $name = time() . '-' . $file->getClientOriginalName();
+                // dd($name);
+                
+                $file->move(public_path('upload/images/'. $name), $name);
+                $imagePath = ('upload/images/'.$name .'/'.$name);
+                $file= $imagePath;  
+            } else{
+                return response()->json([
+                    'success' => false,
+                    'message' => 'invalid_file_format',
+                ], 422);
+            }
 
-    //         if ($result) {
-    //             return response()
-    //         } else {
-    //             return redirect('user-produk');
-    //         }
-    //     }
-    // }
+            $data = new Image();
+            $data->path = $file;
+            $result = $data->save();
+            if($result){
+                $dataProduk = new Produk;
+                $dataProduk->name = $request->input('name');
+                $dataProduk->jumlah = $request->input('jumlah');
+                $dataProduk->harga = $request->input('harga');
+                $dataProduk->image_id = $data->id;
+                $dataProduk->kategori_id = $request->input('kategori_id');
+                $dataProduk->deskripsi = $request->input('deskripsi');
+                $resultProduk = $dataProduk->save();
+                if($resultProduk){
+                    return response()->json([
+
+                        'succes',
+                    ]);
+
+                } else{
+                    return response()->json([
+                        'gagal'
+                    ]);
+                }
+            }else{
+                return response()->json([
+                    'success' => false,
+                    'message' => 'tidak dapat menyimpan produk',
+                ], 422);
+            }
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'gagal menyimpan produk',
+            ], 422);
+        }
+    }
     
-    // public function edit(Request $request, $id) {
-    //     $rules = array(
-    //         'name' => 'required',
-    //         'harga' => 'required',
-    //         'jumlah' => 'required',
-    //         'deskripsi' => 'required',
-    //         'kategori_id' => 'required',
-    //         'image_id' => 'required',
-    //     );
-    //     $validator = Validator::make($request->all(), $rules);
-        
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'success' => false,
-    //         ])
-    //     } else {
-    //         $data = Produk::find($id);
+    public function edit(Request $request, $id) {
+        $rules = array(
+            'name' => 'required',
+            'harga' => 'required',
+            'jumlah' => 'required',
+            'deskripsi' => 'required',
+            'kategori_id' => 'required',
+        );
 
-    //         $data->name = $request->input('name');
-    //         $data->jumlah = $request->input('jumlah');
-    //         $data->harga = $request->input('harga');
-    //         $data->kategori_id = $request->input('kategori_id');
-    //         $data->image_id = $request->input('image_id');
-    //         $data->deskripsi = $request->input('deskripsi');
-    //         $result = $data->update();
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'validasi salah' => $validator->errors()
+            ]);
+        } 
+        if($request->hasFile('path')){
+            $allowedfileExtension = ['pdf','jpg','png'];
+            $file = $request->file('path'); 
+            $extension = $file->getClientOriginalExtension();
+            $check = in_array($extension, $allowedfileExtension);
 
-    //         if ($result) {
-    //             return redirect('produk');
-    //         } else {
-    //             return redirect('produk');
-    //         }
-    //     }
-    // }
+            if($check){
+                $name = time() . '-' . $file->getClientOriginalName();
+                // dd($name);
+                
+                $file->move(public_path('upload/images/'. $name), $name);
+                $imagePath = ('upload/images/'.$name .'/'.$name);
+                $file= $imagePath;  
+            } else{
+                return response()->json([
+                    'success' => false,
+                    'message' => 'invalid_file_format',
+                ], 422);
+            }
+
+            $data = new Image();
+            $data->path = $file;
+            $data->save();
+           
+        } else {
+            $dataProduk = Produk::find($id);
+            if(!is_null($dataProduk)){
+                $dataProduk->name = $request->input('name');
+                $dataProduk->jumlah = $request->input('jumlah');
+                $dataProduk->harga = $request->input('harga');
+                // $dataProduk->harga = $data->id;
+                $dataProduk->kategori_id = $request->input('kategori_id');
+                $dataProduk->deskripsi = $request->input('deskripsi');
+                $resultProduk = $dataProduk->update();
+                if($resultProduk){
+                    return response()->json([
+
+                        'succes',
+                    ]);
+
+                } else{
+                    return response()->json([
+                        'gagal'
+                    ]);
+                }
+            }
+        }
+    }
     
     public function delete(Request $request, $id) {
         

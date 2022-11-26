@@ -55,20 +55,21 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="post" action="#">
+            @csrf
             <div class="form-group">
                 <label for="jumlah">Jumlah</label>
-                <input type="number" min="1" class="form-control" id="jumlah">
+                <input type="number" name="jumlah" min="1" class="form-control" id="jumlah">
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
-                <textarea class="form-control" id="alamat" rows="3"></textarea>
+                <textarea name="alamat" class="form-control" id="alamat" rows="3"></textarea>
             </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Konfirmasi</button>
+        <button type="submit" class="btn btn-primary">Konfirmasi</button>
       </div>
     </div>
   </div>
