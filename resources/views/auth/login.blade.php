@@ -40,7 +40,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button href="{{route('login')}}" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
                                         <hr>

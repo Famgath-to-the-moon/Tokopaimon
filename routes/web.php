@@ -25,6 +25,7 @@ Route::get('/register',[AuthController::class,'register'])->name('register');
 
 Route::post('/do-login',[AuthController::class,'doLogin'])->name('do-login');
 Route::post('/do-register',[AuthController::class,'doRegister'])->name('do-register');
+Route::post('/do-logout',[AuthController::class,'logout'])->name('do-logout');
 
 
 Route::get('/',[ProdukController::class,'getAll'])->name('home');
@@ -39,43 +40,12 @@ Route::group(['prefix'=>'kategori'],function(){
     Route::get('/{id}',[KategoriController::class,'getDetail'])->name('kategori-detail');
 });
 
-// Route::middleware('roleuser')->group(['prefix'=>'transaksi' ],function(){
-//     Route::post('/',[TransaksiController::class,'add'])->name('transaksi-client');
-// });
 
+Route::middleware('auth:sanctum')->group(function() {
+    Route::group(['prefix'=>'transaksi'],function(){
+        // Route::post('/',[TransaksiController::class,'add'])->name('transaksi-client');
+        Route::post('/produk/{id}',[TransaksiController::class,'add'])->name('transaksi-client-add');
+    });
+});
 
-
-
-// Route::group(['prefix' => 'admin'], function() {
-
-//     //Produk
-//     Route::group(['prefix' => 'produk'], function() {
-//         // Route::get('/',[ProdukController::class,'getAll'])->name('api-all-produk');
-//         Route::get('/paginate',[ProdukController::class,'paginate'])->name('api-paginate-produk');
-//         Route::get('/kategori/{kategori_id}',[ProdukController::class, 'getByKategoriId']);
-//         Route::get('/{id}',[ProdukController::class, 'getDetail'])-> name('api-detail-produk');
-//         Route::post('/',[ProdukController::class,'add'])->name('api-add-produk');
-//         Route::put('/{id}',[ProdukController::class, 'edit'])-> name('api-edit-produk');
-//         Route::delete('/{id}',[ProdukController::class, 'delete'])-> name('api-delete-produk');
-//     });
-
-//     //Transaksi
-//     Route::group(['prefix' => 'transaksi'], function () {
-//         Route::get('/oke', function () {
-//             return 'halo';
-//         });
-//         Route::get('/', [TransaksiController::class, 'getAll']) -> name('api-get-all-transaksi');
-//         Route::get('/paginate', [TransaksiController::class, 'paginate']) -> name('api-get-paginate-transaksi');
-//         Route::post('/produk/{id}', [TransaksiController::class, 'add']) -> name('api-add-transaksi');
-//     });
-
-//     //Kategori
-//     Route::group(['prefix' => 'kategori'], function () {
-//         Route::get('/oke', function () {
-//             return 'halo';
-//         });
-//         Route::get('/', [KategoriController::class, 'getAll']) -> name('api-get-all-kategori');
-//         Route::get('/paginate', [KategoriController::class, 'paginate']) -> name('api-get-paginate-kategori');
-//     });
-// });
 

@@ -30,11 +30,11 @@ class TransaksiController extends Controller
         ]);
     }
     
-    public function detail(Request $request, $id) {
+    public function getDetail(Request $request, $id) {
         $data = Transaksi::find($id);
         
         return view('user.transaksi',[
-            'data' => $data,
+            'datas' => $data,
         ]);
     }
     
@@ -42,8 +42,6 @@ class TransaksiController extends Controller
         $rules = array(
             'jumlah' => 'required',
             'alamat' => 'required',
-            'total_pembayaran' => 'required',
-            'user_id' => 'required',
         );
         
         $validator = Validator::make($request->all(), $rules);
@@ -57,11 +55,17 @@ class TransaksiController extends Controller
             if ($dataProduk->jumlah == 0){
                 return redirect('product-detail',$dataProduk->id);
             }
+            
+            $harga=$dataProduk->harga;
+            $jumlah =$request->input('jumlah');
+            $bayar = intval($harga*$jumlah);
 
             $data = new Transaksi;
             $data->jumlah = $request->input('jumlah');
+            $data->alamat = $request->input('alamat');
+            $data->total_pembayaran = $bayar;
             $data->produk_id = $produk_id;
-            $data->user_id = $request->input('user_id');
+            $data->user_id = auth()->user()->id;
 
             $result = $data->save();
 
@@ -72,14 +76,12 @@ class TransaksiController extends Controller
                 $resultProduk = $dataProduk->update();
                 
                 if($resultProduk || $result){
-                    return redirect('user-transaksi',[
-                        'data' => $dataProduk,$data
+                    return view('user.transaksi',[
+                            'dataProduk' => $dataProduk,
+                            'dataTrans'=>$data,
                     ]);
                 }else {
-                    return response()->json([
-                        'success' => false,
-                        'message' => "Jumlah produk tidak berkurang"
-                    ], 403);
+                    return redirect()->route('produk-detail',$produk_id);
                 }
             }
             // if ($result) {

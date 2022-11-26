@@ -67,37 +67,27 @@ class AuthController extends Controller
             ->with('error','Email-Address And Password Are Wrong.');
         }
     }
-    public function doRegister(Request $request) {
-        $rules = array(
-            // 'role_id' => 'required',
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        );
-    
-        $validator = Validator::make($request->all(), $rules);
-    
-        if ($validator -> fails()) {
-            return redirect()->route('register');
-        } else {
-            $data = new User;
-            $data->role_id  =  2;
-            $data->name = $request->input('name');
-            $data->email = $request->input('email');
-            $data->password = bcrypt($request->input('password'));
-            $result = $data->save();
-            $data->createToken('token');
+    public function doRegister(Request $request) {  
 
-            if ($result) {
-                if (auth()->user()->role_id == 1) {
-                    return redirect()->route('adminHome');
-                }
-                if (auth()->user()->role_id == 2) {
-                    return redirect()->route('home');
-                };
-            } else {
-                return redirect()->route('register');
-            }
+        $this->validate($request, [
+            'name' => ['required'],
+            'email' => ['required','email'],
+            'password' => ['required', 'min:8'],
+            'password_confirmation' => ['required', 'min:8', 'confirmed'],
+            'role_id' => ['required'],
+        ]);
+
+       $user = User::create([
+            'name' => $request->name,
+            'role_id' => $request->role_id,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        if (Auth::attempt(['email' => $user->email, 'password' => $request->password])) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/');
         }
     }
     public function logout(Request $request)
@@ -108,7 +98,7 @@ class AuthController extends Controller
  
         request()->session()->regenerateToken();
  
-        return redirect('/login');
+        return redirect()->route('login');
     }
     // public function login(Request $request) {
         //     $email = $request->email;

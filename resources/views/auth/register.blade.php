@@ -38,14 +38,19 @@
                                         <input type="password" name="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Password">
                                     </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
-                                    Daftar akun
+                                    Register Account
                                 </button>
+                                <hr>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="{{route('login')}}">sudah punya akun? silahkan Login</a>
+                                <a class="small" href="{{route('login')}}">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

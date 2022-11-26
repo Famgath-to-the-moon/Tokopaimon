@@ -55,7 +55,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="#">
+        <form method="post" action="{{route('transaksi-client-add', $datas->id)}}">
             @csrf
             <div class="form-group">
                 <label for="jumlah">Jumlah</label>
@@ -65,11 +65,11 @@
                 <label for="alamat">Alamat</label>
                 <textarea name="alamat" class="form-control" id="alamat" rows="3"></textarea>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary">Konfirmasi</button>
+            </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-primary">Konfirmasi</button>
       </div>
     </div>
   </div>
