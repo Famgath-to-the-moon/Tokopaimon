@@ -12,9 +12,7 @@ class TransaksiController extends Controller
     public function getAll(Request $request) {
         $data = Transaksi::with('produk','user')->get();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Mengambil Data',
+        return view('user.transaksi',[
             'data' => $data,
         ]);
     }
@@ -27,19 +25,15 @@ class TransaksiController extends Controller
         
         $data = Transaksi::with('produk','user')->paginate($perPage,$columns,$pageName,$page);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Mengambil Data',
+        return view('user.transaksi',[
             'data' => $data,
         ]);
     }
     
     public function detail(Request $request, $id) {
         $data = Transaksi::find($id);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil Mengambil Data',
+        
+        return view('user.transaksi',[
             'data' => $data,
         ]);
     }
@@ -47,24 +41,21 @@ class TransaksiController extends Controller
     public function add(Request $request,$produk_id) {
         $rules = array(
             'jumlah' => 'required',
+            'alamat' => 'required',
+            'total_pembayaran' => 'required',
             'user_id' => 'required',
         );
         
         $validator = Validator::make($request->all(), $rules);
         
+        $dataProduk = Produk::find($produk_id);
+        
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => "Gagal Menambah Data, Validasi salah"
-            ], 403);
+            return redirect('product-detail',$dataProduk->id);
         } else {
-            $dataProduk = Produk::find($produk_id);
 
             if ($dataProduk->jumlah == 0){
-                return response()->json([
-                    'success' => true,
-                    'message' => "Stok Habis",
-                ],403);
+                return redirect('product-detail',$dataProduk->id);
             }
 
             $data = new Transaksi;
@@ -81,14 +72,10 @@ class TransaksiController extends Controller
                 $resultProduk = $dataProduk->update();
                 
                 if($resultProduk || $result){
-                    return response()->json([
-                        'success' => true,
-                        'message (1)' => "Berhasil Menmbahkan Data",
-                        'message (2)' => "Jumlah produk telah berkurang",
+                    return redirect('user-transaksi',[
                         'data' => $dataProduk,$data
                     ]);
-                }
-                else {
+                }else {
                     return response()->json([
                         'success' => false,
                         'message' => "Jumlah produk tidak berkurang"

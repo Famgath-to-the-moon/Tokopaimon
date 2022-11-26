@@ -7,7 +7,6 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Dashboard</title>
-
     <!-- Custom fonts for this template-->
     <link href="{!! asset('assets/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">
     <link
@@ -17,5 +16,19 @@
     <!-- Custom styles for this template-->
     <link href="{!! asset('assets/css/sb-admin-2.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('assets/vendor/datatables/dataTables.bootstrap4.min.css') !!}" rel="stylesheet">
+
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="{{ asset('/assets/admin/plugins/global/plugins.bundlec3e8.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/plugins/custom/prismjs/prismjs.bundlec3e8.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/style.bundlec3e8.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <!--end::Global Theme Styles-->
+
+    <!--begin::Layout Themes(used by all pages)-->
+    <link href="{{ asset('/assets/admin/css/themes/layout/header/base/lightc3e8.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/themes/layout/header/menu/lightc3e8.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/themes/layout/brand/darkc3e8.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/themes/layout/aside/darkc3e8.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
+    <!--end::Layout Themes-->
 
 </head>

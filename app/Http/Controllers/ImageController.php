@@ -37,7 +37,7 @@ class ImageController extends Controller
                 // dd($name);
                 
                 $file->move(public_path('upload/images/'. $name), $name);
-                $imagePath = public_path('upload/images/'.$name .'/'.$name);
+                $imagePath = ('upload/images/'.$name .'/'.$name);
                 $file= $imagePath;  
             } else{
                 return response()->json([

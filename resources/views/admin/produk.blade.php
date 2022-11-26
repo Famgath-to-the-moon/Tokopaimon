@@ -14,75 +14,22 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Nama Barang</th>
-                    <th>Harga</th>
-                    <th>Stok</th>
+                    <th>No</th>
+                    <th>Nama</th>
                     <th>Kategori</th>
-                    <th>Action</th>
+                    <th>jumlah</th>
+                    <th>harga</th>
+                    <th>image</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Shampo</td>
-                    <td>50000</td>
-                    <td>5</td>
-                    <td>Kesehatan</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-circle">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-danger btn-circle">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Shampo</td>
-                    <td>50000</td>
-                    <td>5</td>
-                    <td>Kesehatan</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-circle">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-danger btn-circle">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Shampo</td>
-                    <td>50000</td>
-                    <td>5</td>
-                    <td>Kesehatan</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-circle">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-danger btn-circle">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Shampo</td>
-                    <td>50000</td>
-                    <td>5</td>
-                    <td>Kesehatan</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-circle">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-danger btn-circle">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
+                @foreach ($datas as $data )
+                <td>{{$data-> name}}</td>   
+                <td>{{$data-> kategori->name}}</td>
+                <td>{{$data-> jumlah}}</td>
+                <td>{{$data-> harga}}</td>
+                <td><img src={{ $data->image->path} } alt="ini gambar"></td>
+                @endforeach
             </tbody>
         </table>
     </div>
