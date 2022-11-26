@@ -32,7 +32,7 @@ Route::get('/register', function () {
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    })->name('dasboard');
+    })->name('dashboard');
     Route::get('/produk', function () {
         return view('admin.produk');
     })->name('produk');
