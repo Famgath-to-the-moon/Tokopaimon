@@ -7,6 +7,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{!! asset('assets/js/sb-admin-2.min.js') !!}"></script>
+    <script src="{!! asset('assets/js/sb-admin-2.js') !!}"></script>
 
     <!-- Page level plugins -->
     <script src="{!! asset('assets/vendor/chart.js/Chart.min.js') !!}"></script>
