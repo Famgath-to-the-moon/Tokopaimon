@@ -13,8 +13,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{Request::is('') ? 'active' : ''}}">
-                <a class="nav-link  " href="{{route('dashboard')}}">
+            <li class="nav-item {{Request::is('admin/dashboard') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -35,7 +35,7 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item {{Request::is('user/produk/kategori') ? 'active' : ''}}">
+            <li class="nav-item {{Request::is('admin/kategori') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('kategori')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Kategori</span></a>
@@ -50,7 +50,7 @@
             </div>
 
             <!-- Nav Item - Report -->
-            <li class="nav-item">
+            <li class="nav-item {{Request::is('admin/transaksi') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('transaksi')}}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Transaksi</span>

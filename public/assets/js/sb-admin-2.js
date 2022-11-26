@@ -53,4 +53,13 @@
     e.preventDefault();
   });
 
+  let path = location.pathname.split('/')[2]; 
+
+  $('.nav-item').each(function() {
+    console.log(this);
+    if (this.value === path) {
+      $(this).addClass('active');
+    }
+  });
+
 })(jQuery); // End of use strict

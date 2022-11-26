@@ -45,4 +45,3 @@ Route::group(['prefix' => 'admin'], function() {
         return view('admin.transaksi');
     })->name('transaksi');
 });
-
