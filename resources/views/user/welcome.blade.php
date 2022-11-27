@@ -10,6 +10,7 @@
     @endforeach
 </div>
 
+<div class="container">
 <div class="row">
     @foreach ($datas as $data)
     <div class="col-lg-3">
@@ -18,16 +19,17 @@
                     <img src="{{ asset($data->image->path) }}" class="card-img-top" alt="...">
                 </div>    
                 <div class="card-body border-top">
-                    <h5 class="card-title text-secondary" style="font-weight: bold">{{ $data->name }}</h5>
+                    <h1 class="card-title text-secondary" style="font-weight: bold">{{ $data->name }}</h1>
                     <div class="mt-1">
-                        <p class="card-text border-top pt-2 mb-3 text-secondary fw-normal"><i class="fas fa-star"></i> 5</p>
-                        <p class="text-secondary mb-0 fw-normal">{{$data->harga}}</p>
-                        <p class="text-secondary mb-0 fw-normal">{{$data->kategori->name}}</p>
+                        <p class="card-text border-top pt-4 mb-2 text-secondary fw-normal"><i class="fas fa-star"></i> 5</p>
+                        <p class="text-secondary mb-0 fw-normal" style="font-size:14px">Rp {{$data->harga}}</p>
+                        <p class="text-secondary mb-0 fw-normal" style="font-size:14px">{{$data->kategori->name}}</p>
                     </div>
                 </div>
             </a>
         </div>
     @endforeach
+</div>
 </div>
 <div>
 </x-layout.default>
