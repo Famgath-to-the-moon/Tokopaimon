@@ -59,11 +59,11 @@
             @csrf
             <div class="form-group">
                 <label for="jumlah">Jumlah</label>
-                <input type="number" name="jumlah" min="1" class="form-control" id="jumlah">
+                <input type="number" name="jumlah" min="1" class="form-control" id="jumlah" required>
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
-                <textarea name="alamat" class="form-control" id="alamat" rows="3"></textarea>
+                <textarea name="alamat" class="form-control" id="alamat" rows="3" required></textarea>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
