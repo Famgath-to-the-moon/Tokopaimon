@@ -69,9 +69,10 @@
                 <tr>
                     <th>Nama</th>
                     <th>Kategori</th>
-                    <th>jumlah</th>
-                    <th>harga</th>
-                    <th>image</th>
+                    <th>Jumlah</th>
+                    <th>Harga</th>
+                    <th>Image</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -80,8 +81,16 @@
                 <td>{{$data-> name}}</td>   
                 <td>{{$data-> kategori->name}}</td>
                 <td>{{$data-> jumlah}}</td>
-                <td>{{$data-> harga}}</td>
+                <td>Rp.{{$data-> harga}}</td>
                 <td><img src="{{ asset($data->image->path) }}" alt="ini gambar" width="50" height="70"></td>
+                <td>
+                    <a href="#" class="btn btn-primary btn-circle p-2" >
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger btn-circle p-2">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -2,7 +2,8 @@
 <div class="d-flex flex-column justify-content-center" style="min-height:100vh">
 <div class="card shadow" style="text-decoration:none" >
     <div class="card-header d-flex align-items-center">
-        <h1 style="font-weight:bolder"> Detail Produk</h1>
+        <a href="{{ route('produk-client') }}"><i style="font-weight:bolder; font-size:24px" class="fas fa-arrow-left"></i></a>
+        <h1 style="font-weight:bolder; font-size:24px" class="mb-0 ml-4"> Detail Produk</h1>
     </div>   
     <div class="card-body border-top">
         <div>
