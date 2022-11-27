@@ -1,9 +1,12 @@
 <x-layout.admin>
 <div class="container-fluid">
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-</div>
-<H1 class="text-center">INI KONTEN</H1>
+    <div class="d-sm-flex flex-column my-4">
+        <div  class="d-flex align-items-center" style="height: 80vh">    
+            <div style="width: 100%">
+                <h1 style="text-align: center; font-size: 100px;">Selamat Datang Admin</h1>
+            </div>
+        </div>                       
+    </div>
 </div>
 </x-layout.admin>

@@ -37,7 +37,7 @@
                                     <button type="submit"  class="text-sm btn btn-outline-primary">Logout</button>
                                 </form>
                                 @else
-                                    <a href="{{ route('login') }}" class="text-sm btn btn-outline-primary">Log in</a>
+                                    <a href="{{ route('login') }}" class="text-sm btn btn-outline-primary mr-2">Log in</a>
 
                                     @if (Route::has('register'))
                                         <a href="{{ route('register') }}" class="text-sm btn btn-outline-primary">Register</a>

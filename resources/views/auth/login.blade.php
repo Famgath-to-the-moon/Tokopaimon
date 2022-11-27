@@ -20,7 +20,7 @@
                             <div class="col">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <form class="user" method="POST" action="{{ route('do-login')}}">
                                         @csrf
@@ -40,14 +40,14 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" style="font-size: 14px" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
                                         <hr>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{route('register')}}">Create an Account!</a>
+                                        <a style="font-size: 12px" class="small" href="{{route('register')}}">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>

@@ -3,9 +3,10 @@
 <div class="card-header py-3 d-flex justify-content-between align-items-center">
     <h6 class="m-0 font-weight-bold text-primary">DATA PRODUK</h6>
     <button href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahProduk">
-        <span class="icon text-white-50">
+        <!-- <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
-        </span>
+        </span> -->
+        <i class="fas fa-plus"></i>
         <span class="text">Tambah Barang</span>
     </button>
 </div>
@@ -68,10 +69,9 @@
                 <tr>
                     <th>Nama</th>
                     <th>Kategori</th>
-                    <th>Jumlah</th>
-                    <th>Harga</th>
-                    <th>Image</th>
-                    <th>Action</th>
+                    <th>jumlah</th>
+                    <th>harga</th>
+                    <th>image</th>
                 </tr>
             </thead>
             <tbody>
