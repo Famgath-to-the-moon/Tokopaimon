@@ -14,7 +14,7 @@
                     <div class="col">
                         <div class="p-5">
                             <div class="text-center pb-4">
-                                <h1 class="h4 text-gray-900">Create an Account!</h1>
+                                <h1 class="text-gray-900">Create an Account!</h1>
                             </div>
                             <form class="user" method="POST" action="{{route('do-register')}}">
                                 @csrf
@@ -34,14 +34,14 @@
                                             id="exampleInputPassword" placeholder="Password">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                <button type="submit" style="font-size: 14px" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </button>
                                 <hr>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="{{route('login')}}">Already have an account? Login!</a>
+                                <a class="small" style="font-size: 12px" href="{{route('login')}}">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

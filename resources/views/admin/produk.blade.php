@@ -3,9 +3,10 @@
 <div class="card-header py-3 d-flex justify-content-between align-items-center">
     <h6 class="m-0 font-weight-bold text-primary">DATA PRODUK</h6>
     <button href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#tambahProduk">
-        <span class="icon text-white-50">
+        <!-- <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
-        </span>
+        </span> -->
+        <i class="fas fa-plus"></i>
         <span class="text">Tambah Barang</span>
     </button>
 </div>
@@ -47,11 +48,11 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Nama</th>
-                    <th>Kategori</th>
-                    <th>jumlah</th>
-                    <th>harga</th>
-                    <th>image</th>
+                    <th>NAMA</th>
+                    <th>KATEGORI</th>
+                    <th>JUMLAH</th>
+                    <th>HARGA</th>
+                    <th>IMAGE</th>
                 </tr>
             </thead>
             <tbody>
