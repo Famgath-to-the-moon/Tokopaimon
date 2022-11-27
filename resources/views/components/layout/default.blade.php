@@ -15,33 +15,32 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-flex">
                     
+                    <div class="navbar-brand py-0 my-0 mx-4">
+                        <h1 class="mb-0 pt-4 text-primary" style="height: 100%; font-weight: normal">TOKO<span style="font-weight: bold">PAIMON</span></h1>
+                    </div>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        
                         <div class="topbar-divider d-none d-sm-block"></div>
                         @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            <div class="hidden fixed top-0 right-0 px-6 py-3 sm:block">
                                 @auth
                                 <form action="{{ route('do-logout') }}" method="POST">
                                     @csrf
 
-                                    <button type="submit"  class="text-sm text-gray-700 dark:text-gray-500 underline">Logout</button>
+                                    <button type="submit"  class="text-sm btn btn-outline-primary">Logout</button>
                                 </form>
                                 @else
-                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                    <a href="{{ route('login') }}" class="text-sm btn btn-outline-primary">Log in</a>
 
                                     @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                        <a href="{{ route('register') }}" class="text-sm btn btn-outline-primary">Register</a>
                                     @endif
                                 @endauth
                             </div>
@@ -65,7 +64,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span style="font-size: 14px">Copyright &copy; WireShark 2.0 - 2022</span>
                     </div>
                 </div>
             </footer>

@@ -1,5 +1,6 @@
 <x-layout.default>
 
+<div style="min-height :100vh">
 <div class="container bg-primary text-light mb-3 d-flex rounded justify-content-around">
     @foreach ($kategoris as $kategori)
     <a href="{{route('produk-by-kategori',$kategori->id)}}" class="d-flex flex-column btn btn-primary btn-icon-split">
@@ -44,4 +45,5 @@
         </div>
     @endfor -->
 </div>
+<div>
 </x-layout.default>
