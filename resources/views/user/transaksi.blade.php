@@ -9,7 +9,7 @@
         <H1>ini get datanya, methodnya dah di kodingan nanti tinggal diterapin di slacingan</H1>
         nama barang {{$dataProduk->name}}
         <br>
-        total pembayaran {{$dataProduk->name}}
+        total pembayaran {{$dataTrans->total_pembayaran}}
         <br>
         silahkan bayar di rekening bri 2193u1298
     </div>

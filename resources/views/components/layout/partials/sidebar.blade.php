@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin-home')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('dashboard')}}">
+                <a class="nav-link" href="{{route('admin-home')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -29,14 +29,14 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('produk')}}">
+                <a class="nav-link" href="{{route('produk-admin')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Produk</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('kategori')}}">
+                <a class="nav-link" href="{{route('kategori-admin')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Kategori</span></a>
             </li>
@@ -51,7 +51,7 @@
 
             <!-- Nav Item - Report -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('transaksi')}}">
+                <a class="nav-link" href="{{route('transaksi-admin')}}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Transaksi</span>
                 </a>

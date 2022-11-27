@@ -41,11 +41,28 @@ Route::group(['prefix'=>'kategori'],function(){
 });
 
 
-Route::middleware('auth:sanctum')->group(function() {
+Route::middleware('auth:sanctum','roleuser')->group(function() {
     Route::group(['prefix'=>'transaksi'],function(){
         // Route::post('/',[TransaksiController::class,'add'])->name('transaksi-client');
         Route::post('/produk/{id}',[TransaksiController::class,'add'])->name('transaksi-client-add');
     });
 });
+Route::middleware('auth:sanctum','roleadmin')->group(function() {
+    Route::group(['prefix'=>'admin'],function(){
+        Route::get('/dashboard',function(){
+            return view('admin.dashboard');
+        })->name('admin-home');
 
+        Route::group(['prefix'=>'produk'],function(){
+            Route::get('/',[ProdukController::class,'All'])->name('produk-admin');
+            Route::post('/',[ProdukController::class,'add'])->name('add-produk-admin');
+            Route::put('/{id}',[ProdukController::class,'edit'])->name('edit-produk-admin');
+            Route::delete('/{id}',[ProdukController::class,'delete'])->name('delete-produk-detail');
+        });
+        Route::group(['prefix'=>'kategori'],function(){
+            Route::get('/',[KategoriController::class,'getAll'])->name('kategori-admin');
+        });
+        Route::get('/transaksi',[TransaksiController::class,'getAll'])->name('transaksi-admin');
+    });
+});
 

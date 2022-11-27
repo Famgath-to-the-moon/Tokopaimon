@@ -1,4 +1,4 @@
-<x-layout.default>
+<x-layout.admin>
 <div class="card shadow mb-4">
 <div class="card-header py-3 d-flex justify-content-between align-items-center">
     <h6 class="m-0 font-weight-bold text-primary">DATA TRANSAKSI</h6>
@@ -83,4 +83,4 @@
     </div>
 </div>
 </div>
-</x-layout.default>
+</x-layout.admin>

@@ -20,6 +20,15 @@ class ProdukController extends Controller
 
         ]);
     }
+    public function All(Request $request) {
+        $data = Produk::with('kategori','image')->get();
+        $kategori = Kategori::all();
+        return view('admin.produk',[
+            'datas' => $data,
+            'kategoris' => $kategori,
+
+        ]);
+    }
     
     public function paginate(Request $request) {
         $perPage = $request->query('per_page');
@@ -143,9 +152,7 @@ class ProdukController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return response()->json([
-                'validasi salah' => $validator->errors()
-            ]);
+            return redirect()->route('admin-home');
         } 
         if($request->hasFile('path')){
             $allowedfileExtension = ['pdf','jpg','png'];

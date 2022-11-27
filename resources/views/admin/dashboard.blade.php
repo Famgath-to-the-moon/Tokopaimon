@@ -1,4 +1,4 @@
-<x-layout.default>
+<x-layout.admin>
 <div class="container-fluid">
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -6,4 +6,4 @@
 </div>
 <H1 class="text-center">INI KONTEN</H1>
 </div>
-</x-layout.default>
+</x-layout.admin>

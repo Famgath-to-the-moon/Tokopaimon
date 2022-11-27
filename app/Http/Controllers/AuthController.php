@@ -57,7 +57,7 @@ class AuthController extends Controller
         {
             $request->session()->regenerate();
             if (auth()->user()->role_id == 1) {
-                return redirect()->route('adminHome');
+                return redirect()->route('admin-home');
             }
             if (auth()->user()->role_id == 2) {
                 return redirect()->route('home');
