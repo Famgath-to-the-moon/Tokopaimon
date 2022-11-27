@@ -20,19 +20,38 @@
           </button>
         </div>
         <div class="modal-body">
-          <form method="post" action="">
+          <form method="post" enctype="multipart/form-data" action="{{route('add-produk-admin')}}">
               @csrf
               <div class="form-group">
                 <label for="namaBarang">Nama Barang</label>
-                <input type="text" name="namaBarang" class="form-control" id="namaBarang" placeholder="Masukkan nama barang" required>
+                <input type="text" name="name" class="form-control" id="namaBarang" placeholder="Masukkan nama barang" required>
+              </div>
+              <div class="form-group">
+                <label for="desc">Deskripsi</label>
+                <input type="text" name="deskripsi" class="form-control" id="desc" placeholder="Masukkan deskripsi" required>
+              </div>
+              <div class="form-group">
+                <label for="gambar">Gambar</label>
+                <input type="file" name="path" class="input-form" id="gambar" required>
               </div>
               <div class="form-group">
                 <label for="stokAwal">Stok Awal</label>
-                <input type="number" name="stokAwal" min="1" class="form-control" id="stokAwal" required>
+                <input type="number" name="jumlah" min="1" class="form-control" id="stokAwal" required>
+              </div>
+              <div class="input-group mb-3">
+                <select name="kategori_id" class="custom-select" id="inputGroupSelect02">
+                  <option selected>Choose...</option>
+                  @foreach ($kategoris as $kategori )
+                  <option value="{{$kategori->id}}">{{$kategori->name}}</option>
+                  @endforeach
+                </select>
+                <div class="input-group-append">
+                  <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                </div>
               </div>
               <div class="form-group">
                 <label for="hargaBarang">Harga</label>
-                <input type="number" name="hargaBarang" min="1" class="form-control" id="hargaBarang" required>
+                <input type="number" name="harga" min="1" class="form-control" id="hargaBarang" required>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -48,11 +67,11 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>NAMA</th>
-                    <th>KATEGORI</th>
-                    <th>JUMLAH</th>
-                    <th>HARGA</th>
-                    <th>IMAGE</th>
+                    <th>Nama</th>
+                    <th>Kategori</th>
+                    <th>jumlah</th>
+                    <th>harga</th>
+                    <th>image</th>
                 </tr>
             </thead>
             <tbody>

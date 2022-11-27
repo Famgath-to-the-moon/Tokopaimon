@@ -8,6 +8,7 @@ use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DataTables;
+use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class ProdukController extends Controller
 {
@@ -117,27 +118,16 @@ class ProdukController extends Controller
                 $dataProduk->deskripsi = $request->input('deskripsi');
                 $resultProduk = $dataProduk->save();
                 if($resultProduk){
-                    return response()->json([
-
-                        'succes',
-                    ]);
+                    return redirect()->route('add-produk-admin');
 
                 } else{
-                    return response()->json([
-                        'gagal'
-                    ]);
+                    return redirect()->route('add-produk-admin');
                 }
             }else{
-                return response()->json([
-                    'success' => false,
-                    'message' => 'tidak dapat menyimpan produk',
-                ], 422);
+                return redirect()->route('add-produk-admin');
             }
         } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'gagal menyimpan produk',
-            ], 422);
+            return redirect()->route('add-produk-admin');
         }
     }
     

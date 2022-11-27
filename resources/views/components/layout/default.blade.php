@@ -52,9 +52,8 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container">
+                
                 {{$slot}}
-                </div>
                 <!-- /.container-fluid -->
 
             </div>
