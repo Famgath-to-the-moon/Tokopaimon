@@ -10,29 +10,16 @@
                 <tr>
                     <th>Id</th>
                     <th>Nama Kategori</th>
-                    <th>Jumlah Barang</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($datas as $data )
+                    
                 <tr>
-                    <td>1</td>
-                    <td>Nama Kategori</td>
-                    <td>Jumlah Barang</td>
-                    <td>Action</td>
+                    <td>{{$data->id}}</td>
+                    <td>{{$data->name}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Nama Kategori</td>
-                    <td>Jumlah Barang</td>
-                    <td>Action</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nama Kategori</td>
-                    <td>Jumlah Barang</td>
-                    <td>Action</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

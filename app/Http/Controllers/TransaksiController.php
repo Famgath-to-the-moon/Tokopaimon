@@ -13,7 +13,14 @@ class TransaksiController extends Controller
         $data = Transaksi::with('produk','user')->get();
 
         return view('user.transaksi',[
-            'data' => $data,
+            'datas' => $data,
+        ]);
+    }
+    public function All(Request $request) {
+        $data = Transaksi::with('produk','user')->get();
+
+        return view('admin.transaksi',[
+            'datas' => $data,
         ]);
     }
     

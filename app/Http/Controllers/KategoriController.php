@@ -16,6 +16,13 @@ class KategoriController extends Controller
             'message' => 'Berhasil Mengambil Data',
             'data' => $data,
         ]);
+    
+    }
+    public function All(Request $request) {
+        $data = Kategori::with('produk')->get();
+        return view('admin.kategori',[
+        'datas' => $data,
+    ]);
     }
     
     public function paginate(Request $request) {

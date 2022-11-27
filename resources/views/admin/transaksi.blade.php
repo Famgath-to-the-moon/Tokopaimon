@@ -14,7 +14,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>No</th>
+                    <!-- <th>No</th> -->
                     <th>Tanggal Transaksi</th>
                     <th>Nama Pembeli</th>
                     <th>Nama Produk</th>
@@ -24,60 +24,17 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($datas as $data )
+                    
                 <tr>
-                    <td>1</td>
-                    <td>12-11-2022</td>
-                    <td>Jono</td>
-                    <td>Sabun</td>
-                    <td>50.000</td>
-                    <td>3</td>
-                    <td>150.000</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>{{$data->user->name}}</td>
+                    <td>{{$data->produk->name}}</td>
+                    <td>{{$data->produk->harga}}</td>
+                    <td>{{$data->jumlah}}</td>
+                    <td>{{$data->total_pembayaran}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>13-11-2022</td>
-                    <td>Wahyono</td>
-                    <td>Kursi</td>
-                    <td>150.000</td>
-                    <td>1</td>
-                    <td>150.000</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>13-11-2022</td>
-                    <td>Wahyono</td>
-                    <td>Kursi</td>
-                    <td>150.000</td>
-                    <td>1</td>
-                    <td>150.000</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>13-11-2022</td>
-                    <td>Wahyono</td>
-                    <td>Kursi</td>
-                    <td>150.000</td>
-                    <td>1</td>
-                    <td>150.000</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>13-11-2022</td>
-                    <td>Wahyono</td>
-                    <td>Kursi</td>
-                    <td>150.000</td>
-                    <td>1</td>
-                    <td>150.000</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>13-11-2022</td>
-                    <td>Wahyono</td>
-                    <td>Kursi</td>
-                    <td>150.000</td>
-                    <td>1</td>
-                    <td>150.000</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

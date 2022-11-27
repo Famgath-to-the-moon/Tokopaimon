@@ -60,9 +60,9 @@ Route::middleware('auth:sanctum','roleadmin')->group(function() {
             Route::delete('/{id}',[ProdukController::class,'delete'])->name('delete-produk-detail');
         });
         Route::group(['prefix'=>'kategori'],function(){
-            Route::get('/',[KategoriController::class,'getAll'])->name('kategori-admin');
+            Route::get('/',[KategoriController::class,'All'])->name('kategori-admin');
         });
-        Route::get('/transaksi',[TransaksiController::class,'getAll'])->name('transaksi-admin');
+        Route::get('/transaksi',[TransaksiController::class,'All'])->name('transaksi-admin');
     });
 });
 
