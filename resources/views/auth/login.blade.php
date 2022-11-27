@@ -3,7 +3,7 @@
 
 <x-layout.partials.head/>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-primary d-flex flex-row align-items-center justify-content-center" style="min-height: 100vh">
 
     <div class="container">
 
@@ -16,8 +16,8 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+                            <div class="col">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>

@@ -30,18 +30,18 @@
                         
                         <div class="topbar-divider d-none d-sm-block"></div>
                         @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            <div class="hidden fixed top-0 right-0 px-6 py-3 sm:block">
                                 @auth
                                 <form action="{{ route('do-logout') }}" method="POST">
                                     @csrf
 
-                                    <button type="submit"  class="text-sm text-gray-700 dark:text-gray-500 underline">Logout</button>
+                                    <button type="submit"  class="text-sm btn btn-outline-primary">Logout</button>
                                 </form>
                                 @else
-                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                    <a href="{{ route('login') }}" class="text-sm btn btn-outline-primary">Log in</a>
 
                                     @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                        <a href="{{ route('register') }}" class="text-sm btn btn-outline-primary">Register</a>
                                     @endif
                                 @endauth
                             </div>
@@ -65,7 +65,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span style="font-size: 14px">Copyright &copy; WireShark 2.0 - 2022</span>
                     </div>
                 </div>
             </footer>
