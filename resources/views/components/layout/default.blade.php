@@ -60,10 +60,10 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span style="font-size: 14px">Copyright &copy; WireShark 2.0 - 2022</span>
+            <footer class="footer bg-white" style="height: 80px;   position: relative;left: 0;bottom: 0; width: 100%">
+                <div class="container" style="height:100%">
+                    <div class="copyright text-center my-auto d-flex justify-content-center align-items-center" style="height:100%; width: 100%">
+                        <span style="font-size: 14px; width: 100%">Copyright &copy; WireShark 2.0 - 2022</span>
                     </div>
                 </div>
             </footer>
